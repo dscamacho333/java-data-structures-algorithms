@@ -118,7 +118,29 @@ public class LinkedListImplementation <T> implements ILinkedList<T> {
 
     @Override
     public void deleteSpecificNode(T value) {
-        
+        if(!isEmpty()){
+            if((head == tail) && (value.equals(head.value))){
+                head = null;
+                tail = null;
+            }else if(value.equals(head.value)){
+                head = head.next;
+            }else{
+                Node<T> prev;
+                Node<T> temp;
+                prev = head;
+                temp = head.next;
+                while((temp != null) && !(temp.value.equals(value))){
+                    prev = prev.next;
+                    temp = temp.next;
+                }
+                if(temp != null){
+                    prev.next = temp.next;
+                    if(temp == tail){
+                        tail = prev;
+                    }
+                }
+            }
+        }
     }
 
     /*
