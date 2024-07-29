@@ -4,6 +4,7 @@ public interface ILinkedList <T> {
 
     void createToHead(T value);
     void createToTail(T value);
+    boolean contains(T value);
     boolean isEmpty();
     void deleteFromHead();
     void deleteFromTail();

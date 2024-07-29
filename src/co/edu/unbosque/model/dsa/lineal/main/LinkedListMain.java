@@ -42,18 +42,22 @@ public class LinkedListMain {
                     list.deleteSpecificNode(sc.nextLine());
                     break;
                 }
-                case 7:{}
-                case 8:{}
-                case 9:{
+                case 7:{
+                    sc.nextLine();
+                    System.out.println("Enter a name you want to look for: ");
+                    System.out.println("Is the name on the LinkedList?: " + list.contains(sc.nextLine()));
+                    break;
+                }
+                case 8:{
                     list.readAll();
                     System.out.println("");
                     break;
                 }
-                case 10:{
+                case 9:{
                     System.out.println("Is the LinkedList empty?: " + list.isEmpty());
                     break;
                 }
-                case 11:{
+                case 10:{
                     break whileLoop;
                 }
             }

@@ -55,6 +55,26 @@ public class LinkedListImplementation <T> implements ILinkedList<T> {
             tail = head;
         }
     }
+    /*
+    Search for specific Node which contains the value algorithm:
+    1) We create a temporary Node (temp).
+    2) We point temporary Node to the head.
+    3) Iterate the list to move forward as long as the temp Node is different to Null and the value is not found yet.
+    4) Return the condition: Is not the temporary Node empty?
+    If true:
+    4.1) It means that after moving through all the list the element was found.
+    If false:
+    4.2) It means that after moving through all the list no element with the valued looked up was found.
+     */
+    @Override
+    public boolean contains(T value) {
+        Node<T> temp;
+        temp = head;
+        while((temp != null) && !(temp.value.equals(value))){
+            temp= temp.next;
+        }
+        return temp != null;
+    }
 
     /*
     Verifies if the LinkedList is empty or not:
@@ -116,6 +136,29 @@ public class LinkedListImplementation <T> implements ILinkedList<T> {
         }
     }
 
+    /*
+    Delete any Node from LinkedList algorithm:
+    1) Validate if the list is not empty.
+    If true:
+    2) Validate if there is only one element, and it contains the value to be deleted.
+    If true:
+    3) We point the head to Null.
+    4) We point the tail to Null.
+    Else if ( (5) Validate if the first elements is the value we are looking and there are at least two elements):
+    6) We point the head to the next element to the head to delete it.
+    If false:
+    7) We create a Node called prev which represents the previous Node.
+    8) We create a Node called temp which represent a temporary Node.
+    9) We point Node prev to the head.
+    10) We point Node temp to the Node after head.
+    11  We start iterating the LinkedList to move through it as long as temporary Node is different to Null and temporary Node value is different to the value to be found.
+    12) Validate if temporary Node is different to Null.
+    If true:
+    13) We point next Node of prev Node to next Node of temp Node.
+    14) Validate if the temp Node equals the tail Node.
+    If true:
+    15) We point previous Node to the tail.
+     */
     @Override
     public void deleteSpecificNode(T value) {
         if(!isEmpty()){
