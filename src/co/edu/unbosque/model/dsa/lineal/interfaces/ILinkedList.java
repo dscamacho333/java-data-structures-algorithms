@@ -7,6 +7,7 @@ public interface ILinkedList <T> {
     boolean isEmpty();
     void deleteFromHead();
     void deleteFromTail();
+    void deleteSpecificNode(T value);
     void readAll();
 
 

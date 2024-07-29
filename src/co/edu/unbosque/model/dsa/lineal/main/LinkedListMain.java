@@ -36,7 +36,12 @@ public class LinkedListMain {
                     list.deleteFromTail();
                     break;
                 }
-                case 6:{}
+                case 6:{
+                    sc.nextLine();
+                    System.out.println("Enter a name you want to delete: ");
+                    list.deleteSpecificNode(sc.nextLine());
+                    break;
+                }
                 case 7:{}
                 case 8:{}
                 case 9:{
