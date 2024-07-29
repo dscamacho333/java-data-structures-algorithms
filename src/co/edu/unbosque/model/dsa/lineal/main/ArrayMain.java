@@ -1,6 +1,6 @@
 package co.edu.unbosque.model.dsa.lineal.main;
 
-import co.edu.unbosque.model.dsa.lineal.implementations.ArrayImplementation;
+import co.edu.unbosque.model.dsa.lineal.implementations.array.ArrayImplementation;
 import co.edu.unbosque.model.dsa.lineal.interfaces.IArray;
 
 import java.util.Scanner;

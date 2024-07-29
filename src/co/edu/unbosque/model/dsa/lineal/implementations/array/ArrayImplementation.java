@@ -1,4 +1,4 @@
-package co.edu.unbosque.model.dsa.lineal.implementations;
+package co.edu.unbosque.model.dsa.lineal.implementations.array;
 
 import co.edu.unbosque.model.dsa.lineal.interfaces.IArray;
 
