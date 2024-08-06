@@ -8,6 +8,7 @@ public class LinkedListImplementation <T> implements ILinkedList<T> {
     Each list has two main parts:
     1) Head: This is a pointer to the first node of the LinkedList.
     2) Tail: This is a pointer to the last node of the LinkedList.
+    Note: Handling a list is basically playing with the pointers.
      */
     protected Node<T> head;
     protected Node<T> tail;
