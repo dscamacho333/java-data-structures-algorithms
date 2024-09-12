@@ -25,7 +25,7 @@ public class DoublyNode <T>{
     Constructor 02: This constructor is used when there are not existing Nodes.
      */
     public DoublyNode (T value) {
-        this(value, null, null);
+        this(value, null, null); //Note: This is a way to call an existing Constructor.
     }
 
 
