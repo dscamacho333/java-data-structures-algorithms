@@ -8,7 +8,6 @@ public class LinkedListImplementation <T> implements ILinkedList<T> {
     Each list has two main parts:
     1) Head: This is a pointer to the first node of the LinkedList.
     2) Tail: This is a pointer to the last node of the LinkedList.
-    Note: Handling a list is basically playing with the pointers.
      */
     protected Node<T> head;
     protected Node<T> tail;
@@ -57,16 +56,16 @@ public class LinkedListImplementation <T> implements ILinkedList<T> {
         }
     }
     /*
-    Search for specific Node which contains the value algorithm:
-    1) We create a temporary Node (temp).
-    2) We point temporary Node to the head.
-    3) Iterate the list to move forward as long as the temp Node is different to Null and the value is not found yet.
-    4) Return the condition: Is not the temporary Node empty?
-    If true:
-    4.1) It means that after moving through all the list the element was found.
-    If false:
-    4.2) It means that after moving through all the list no element with the valued looked up was found.
-     */
+   Search for specific Node which contains the value algorithm:
+   1) We create a temporary Node (temp).
+   2) We point temporary Node to the head.
+   3) Iterate the list to move forward as long as the temp Node is different to Null and the value is not found yet.
+   4) Return the condition: Is not the temporary Node empty?
+   If true:
+   4.1) It means that after moving through all the list the element was found.
+   If false:
+   4.2) It means that after moving through all the list no element with the valued looked up was found.
+    */
     @Override
     public boolean contains(T value) {
         Node<T> temp;
