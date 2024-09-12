@@ -116,9 +116,7 @@ public class LinkedListImplementation <T> implements ILinkedList<T> {
         }
     }
 
-    /*
-    Delete a Node from a specific Node of the LinkedList algorithm:
-     */
+    
     @Override
     public void deleteSpecificNode(T value) {
         if(!isEmpty()){
