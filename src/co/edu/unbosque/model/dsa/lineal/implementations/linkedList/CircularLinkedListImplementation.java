@@ -52,7 +52,29 @@ public class CircularLinkedListImplementation <T> implements ICircularLinkedList
 
      */
     @Override
-    public void deleteNode(T value) {
+    public boolean deleteNode(T value) {
+        CircularNode<T> currentNode = last;
+        boolean found = false;
+        while ((currentNode.next != last) && (!found) ) {
+            found = (currentNode.next.value == value);
+            if(!found){
+                currentNode = currentNode.next;
+            }
+        }
+        found = (currentNode.next.value == value);
+        if(found){
+            CircularNode<T> aux = currentNode.next;
+            if(last == last.next){
+                last = null;
+            }else{
+                if(aux == last){
+                    last = currentNode;
+                }
+                currentNode.next = aux.next;
+            }
+            aux = null;
+        }
+        return (found == true);
     }
 
 
@@ -69,12 +91,17 @@ public class CircularLinkedListImplementation <T> implements ICircularLinkedList
     @Override
     public void readAllNodes() {
 
-        CircularNode<T> aux = last;
-        while(aux != last) {
-            System.out.print("[Node value: " + aux.value + "] ----->");
-            aux = aux.next;
-        }
+        CircularNode<T> current = last.next;
+
+        do{
+            System.out.println(current.value);
+            current = current.next;
+        }while ( current != last.next);
+
     }
 
 
+    /*
+    santiago (last.next) - miguel(last.next.next) - eliecer (last)
+     */
 }

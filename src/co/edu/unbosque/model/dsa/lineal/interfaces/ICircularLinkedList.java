@@ -4,7 +4,7 @@ public interface ICircularLinkedList <T>{
 
     boolean isEmpty();
     void createCircularNode(T value);
-    void deleteNode(T value);
+    boolean deleteNode(T value);
     void readAllNodes();
 
 }
