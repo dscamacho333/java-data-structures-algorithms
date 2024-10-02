@@ -37,7 +37,7 @@ public class CircularLinkedListMain {
                 case 3: {
                     System.out.println("Enter a name to delete: ");
                     String name = sc.next();
-                    circularLinkedList.deleteNode(name);
+                    System.out.println("Name deleted?" + circularLinkedList.deleteNode(name));
                     break;
                 }
                 case 4: {

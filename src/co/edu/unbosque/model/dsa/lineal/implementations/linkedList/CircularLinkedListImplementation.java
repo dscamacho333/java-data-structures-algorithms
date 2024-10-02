@@ -8,13 +8,13 @@ public class CircularLinkedListImplementation <T> implements ICircularLinkedList
     Every CircularLinkedList has one attribute:
     1) A Node that points to the last Node of the CircularLinkedList as reference.
      */
-    private CircularNode<T> last;
+    private CircularNode<T> first;
 
     /*
      Constructor: This constructor is used every time a new CircularLinkedListImplementation object is required.
      */
     public CircularLinkedListImplementation() {
-        this.last = null;
+        this.first = null;
     }
 
     /*
@@ -23,7 +23,7 @@ public class CircularLinkedListImplementation <T> implements ICircularLinkedList
      */
     @Override
     public boolean isEmpty() {
-        return (this.last == null);
+        return (this.first == null);
     }
 
     /*
@@ -40,11 +40,12 @@ public class CircularLinkedListImplementation <T> implements ICircularLinkedList
     public void createCircularNode(T value) {
 
         CircularNode<T> circularNode = new CircularNode<>(value);
-        if(last == null) {
-            last = circularNode;
+        if(first == null) {
+            first = circularNode;
         }else{
-            circularNode.next = last.next;
-            last.next = circularNode;
+            circularNode.next = first.next;
+            first.next = circularNode;
+            first = circularNode;
         }
     }
 
@@ -53,26 +54,26 @@ public class CircularLinkedListImplementation <T> implements ICircularLinkedList
      */
     @Override
     public boolean deleteNode(T value) {
-        CircularNode<T> currentNode = last;
+        CircularNode<T> currentNode = first;
         boolean found = false;
-        while ((currentNode.next != last) && (!found) ) {
-            found = (currentNode.next.value == value);
+        while ((currentNode.next != first) && (!found) ) {
+            found = (currentNode.value.toString().equals(value));
             if(!found){
                 currentNode = currentNode.next;
             }
         }
-        found = (currentNode.next.value == value);
+        found = (currentNode.value.toString().equals(value));
         if(found){
             CircularNode<T> aux = currentNode.next;
-            if(last == last.next){
-                last = null;
+            if(first == first.next){
+                first = null;
             }else{
-                if(aux == last){
-                    last = currentNode;
+                if(aux == first){
+                    first = currentNode;
                 }
                 currentNode.next = aux.next;
             }
-            aux = null;
+            /*currentNode = null;*/
         }
         return (found == true);
     }
@@ -91,17 +92,19 @@ public class CircularLinkedListImplementation <T> implements ICircularLinkedList
     @Override
     public void readAllNodes() {
 
-        CircularNode<T> current = last.next;
+        CircularNode<T> current = first.next;
 
         do{
             System.out.println(current.value);
             current = current.next;
-        }while ( current != last.next);
+        }while ( current != first.next);
+
+        System.out.println("N1: " + first.value);
+        System.out.println("N2: " + first.next.value);
+        System.out.println("N3: " + first.next.next.value);
+        System.out.println("N4: " + first.next.next.next.value);
+        System.out.println("N5: " + first.next.next.next.next.value);
 
     }
 
-
-    /*
-    santiago (last.next) - miguel(last.next.next) - eliecer (last)
-     */
 }
