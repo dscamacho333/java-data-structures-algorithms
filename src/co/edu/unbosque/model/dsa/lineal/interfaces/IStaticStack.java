@@ -1,6 +1,6 @@
 package co.edu.unbosque.model.dsa.lineal.interfaces;
 
-public interface IStack <T> {
+public interface IStaticStack<T> {
 
     void push(T value);
     T pop();

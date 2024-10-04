@@ -1,8 +1,8 @@
 package co.edu.unbosque.model.dsa.lineal.implementations.stack;
 
-import co.edu.unbosque.model.dsa.lineal.interfaces.IStack;
+import co.edu.unbosque.model.dsa.lineal.interfaces.IStaticStack;
 
-public class StaticStackImplementation <T> implements IStack<T> {
+public class StaticStackImplementation <T> implements IStaticStack<T> {
 
     /*
      Every Static Stack must have two attributes:

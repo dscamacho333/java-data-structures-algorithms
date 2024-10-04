@@ -1,7 +1,7 @@
 package co.edu.unbosque.model.dsa.lineal.main;
 
 import co.edu.unbosque.model.dsa.lineal.implementations.stack.StaticStackImplementation;
-import co.edu.unbosque.model.dsa.lineal.interfaces.IStack;
+import co.edu.unbosque.model.dsa.lineal.interfaces.IStaticStack;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class StaticStackMain {
     public static void main (String[] args){
 
         Scanner sc = new Scanner(System.in);
-        IStack<String> staticStackImplementation = new StaticStackImplementation(5);
+        IStaticStack<String> staticStackImplementation = new StaticStackImplementation(5);
         String menu = "*** StaticStack Menu***" + "\n"
                 + "1) Push element into Stack" + "\n"
                 + "2) Pop element from the Stack " + "\n"
