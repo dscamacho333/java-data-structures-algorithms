@@ -18,5 +18,46 @@ public class QueueMain {
                 + "5) Get Queue Length" + "\n"
                 + "6) Read Queue Nodes" + "\n"
                 + "7) Exit system";
+
+        whileLoop: while(true){
+
+            System.out.println(menu);
+            System.out.println("Enter an option: ");
+            int option = sc.nextInt();
+
+            switch(option){
+                case 1:{
+                    System.out.println("Enter a name: ");
+                    String name = sc.next();
+                    queueImplementation.enqueue(name);
+                    break;
+                }
+                case 2:{
+                    System.out.println("Element dequeued: " + queueImplementation.dequeue());
+                    break;
+                }
+                case 3:{
+                    System.out.println("Is it empty: " + queueImplementation.isEmpty());
+                    break;
+                }
+                case 4:{
+                    System.out.println("Queue head is: " + queueImplementation.getQueueHead());
+                    break;
+                }
+                case 5:{
+                    System.out.println("Queue length is: " + queueImplementation.getQueueLength());
+                    break;
+                }
+                case 6:{
+                    queueImplementation.readQueueNodes();
+                    break;
+                }
+                case 7:{
+                    break whileLoop;
+                }
+
+            }
+
+        }
     }
 }

@@ -103,7 +103,7 @@ public class QueueImplementation <T> implements IQueue<T> {
         int position = 1;
         QueueNode<T> aux = head;
         while(aux != null){
-            System.out.print("Node #" + position + ": " + aux.value);
+            System.out.println("Node #" + position + ": " + aux.value);
             aux = aux.next;
             position++;
         }
