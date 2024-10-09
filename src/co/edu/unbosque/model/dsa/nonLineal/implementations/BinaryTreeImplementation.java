@@ -82,4 +82,80 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     public void createNode(T value) {
         createNode(value,null);
     }
+
+    /*
+    Method to validate whether the Binary Tree is empty or not:
+    1) Return if root equals to Null.
+     */
+    @Override
+    public boolean isEmpty() {
+        return (root == null);
+    }
+
+    /*
+    Method to read the Binary Tree In Order:
+    1) Validate if the Root Node is different to Null.
+    A) If TRUE
+    2) Call the recursive method (readInOrder) to read the Left Child Node.
+    3) Print the Root Node.
+    4) Call the recursive method (readInOrder) to read the Right Child Node.
+    B) If FALSE
+    5) Do nothing.
+
+     */
+    @Override
+    public void readInOrder(TreeNode<T> root) {
+        if(!(root == null)){
+            readInOrder(root.leftChild);
+            System.out.println(root);
+            readInOrder(root.rightChild);
+        }
+    }
+
+    /*
+    Method to read the Binary Tree in Pre Order:
+    1) Validate if the Root Node is different to Null.
+    A) If TRUE
+    2) Print the Root Node.
+    3) Call the recursive method (readPreOrder) to read the Left Child Node.
+    4) Call the recursive method (readPreOrder) to read the Right Child Node.
+    B) If FALSE
+    5) Do nothing.
+     */
+    @Override
+    public void readPreOrder(TreeNode<T> root) {
+        if(!(root == null)){
+            System.out.println(root);
+            readPreOrder(root.leftChild);
+            readPreOrder(root.rightChild);
+        }
+    }
+
+    /*
+    Method to read the Binary Tree in Post Order:
+    1) Validate if the Root Node is different to Null.
+    A) If TRUE
+    2) Call the recursive method (readPostOrder) to read the Left Child Node.
+    3) Call the recursive method (readPostOrder) to read the Right Child Node.
+    4) Print the Root Node.
+    B) If FALSE
+    5) Do nothing.
+     */
+    @Override
+    public void readPostOrder(TreeNode<T> root) {
+        if(!(root == null)){
+            readPostOrder(root.leftChild);
+            readPostOrder(root.rightChild);
+            System.out.println(root);
+        }
+    }
+
+    //Getters & Setters
+    public TreeNode<T> getRoot() {
+        return root;
+    }
+
+    public void setRoot(TreeNode<T> root) {
+        this.root = root;
+    }
 }
