@@ -150,6 +150,40 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
         }
     }
 
+    /*
+    Method to read Node with a specified value:
+    1) Create an aux Node and point it to the root Node.
+    2) Iterate while the aux value is different to the specified value.
+    A) If TRUE (value is different to the aux value)
+    3) Validate if the specified value is less than the aux value.
+    C) If TRUE (Value is less than node value)
+    4) Point aux to aux left child Node.
+    D) If FALSE (Value is greater than node value)
+    5) Point aux to aux right child Node. (If Limit)
+    6) Validate if aux node is equal to null.
+    E) If TRUE
+    7) Return Null.
+    F) If FALSE
+    8) Do nothing at all.
+    B) If FALSE (value is equal to the aux value)
+    10) Return aux Node.
+     */
+    @Override
+    public TreeNode<T> readNode(T value) {
+        TreeNode<T> aux = root;
+        while(!(aux.value == value)){
+            if(value.compareTo(aux.value) < 0){
+                aux = aux.leftChild;
+            }else{
+                aux = aux.rightChild;
+            }
+            if(aux == null){
+                return null;
+            }
+        }
+        return aux;
+    }
+
     //Getters & Setters
     public TreeNode<T> getRoot() {
         return root;
