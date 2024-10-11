@@ -17,7 +17,9 @@ public class BinaryTreeMain{
                 + "4) Read In Order " + "\n"
                 + "5) Read Pre Order " + "\n"
                 + "6) Read Post Order " + "\n"
-                + "7) Exit system";
+                + "7) Read Specific Node " + "\n"
+                + "8) Delete Node " + "\n"
+                + "9) Exit system";
 
         whileLoop: while(true){
             System.out.println(menu);
@@ -56,6 +58,18 @@ public class BinaryTreeMain{
                     break;
                 }
                 case 7:{
+                    System.out.println("Enter the value to be searched: ");
+                    int value = sc.nextInt();
+                    System.out.println(binaryTreeImplementation.readNode(value).toString());
+                    break;
+                }
+                case 8:{
+                    System.out.println("Enter the value to be deleted: ");
+                    int value = sc.nextInt();
+                    System.out.println("Has the Node been deleted?: " + binaryTreeImplementation.deleteNode(value));
+                    break;
+                }
+                case 9:{
                     break whileLoop;
                 }
             }

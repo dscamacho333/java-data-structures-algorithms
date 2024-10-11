@@ -184,6 +184,139 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
         return aux;
     }
 
+    /*
+
+     */
+    @Override
+    public boolean deleteNode(T value) {
+        TreeNode<T> aux = root;
+        TreeNode<T> parent = root;
+        boolean isLeftChild = true;
+        if(!(validateIfNodeExists(aux, parent, isLeftChild,value) == true)){
+            return false;
+        }
+        validateNodeChildren(aux, parent, isLeftChild);
+        return true;
+    }
+
+    /*
+
+     */
+    @Override
+    public boolean validateIfNodeExists(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild, T value) {
+        while(!(aux.value == value)){
+            parent = aux;
+            if(value.compareTo(aux.value) < 0){
+                isLeftChild = true;
+                aux = aux.leftChild;
+            }else{
+                isLeftChild = false;
+                aux = aux.rightChild;
+            }
+            if(aux == null){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /*
+
+     */
+    @Override
+    public void validateNodeChildren(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
+
+        if(aux.leftChild == null && aux.rightChild == null){
+            deleteFirstCase(aux, parent, isLeftChild);
+        }else if(aux.rightChild == null){
+            deleteSecondCase(aux, parent, isLeftChild);
+        }else if(aux.leftChild == null){
+            deleteThirdCase(aux, parent, isLeftChild);
+        }else{
+            deleteFourthCase(aux, parent, isLeftChild);
+        }
+
+    }
+
+    /*
+
+     */
+    @Override
+    public void deleteFirstCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
+        if(aux == root){
+            root = null;
+        }else if(isLeftChild){
+            parent.leftChild = null;
+        }else{
+            parent.rightChild = null;
+        }
+    }
+
+    /*
+
+     */
+    @Override
+    public void deleteSecondCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
+        if(aux == root){
+            root = aux.leftChild;
+        }else if(isLeftChild){
+            parent.leftChild = aux.leftChild;
+        }else{
+            parent.rightChild = aux.leftChild;
+        }
+    }
+
+    /*
+
+     */
+    @Override
+    public void deleteThirdCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
+        if(aux == root){
+            root = aux.rightChild;
+        }else if(isLeftChild){
+            parent.leftChild = aux.rightChild;
+        }else{
+            parent.rightChild = aux.rightChild;
+        }
+    }
+
+    /*
+
+     */
+    @Override
+    public void deleteFourthCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
+        TreeNode<T> replacement = getReplacementNode(aux);
+        if(aux == root){
+            root = replacement;
+
+        }else if(isLeftChild){
+            parent.leftChild = replacement;
+        }else{
+            parent.rightChild = replacement;
+        }
+        replacement.leftChild = aux.leftChild;
+    }
+
+    /*
+
+     */
+    @Override
+    public TreeNode<T> getReplacementNode(TreeNode<T> replacedNode) {
+        TreeNode<T> parentReplacement = replacedNode;
+        TreeNode<T> replacement = replacedNode;
+        TreeNode<T> aux = replacedNode.rightChild;
+        while (!(aux == null)){
+            parentReplacement = replacement;
+            replacement = aux;
+            aux = aux.leftChild;
+        }
+        if(!(replacement == replacedNode.rightChild)){
+            parentReplacement.leftChild = replacement.rightChild;
+            replacement.rightChild = replacedNode.rightChild;
+        }
+        return replacement;
+    }
+
     //Getters & Setters
     public TreeNode<T> getRoot() {
         return root;
