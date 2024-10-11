@@ -185,25 +185,37 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     }
 
     /*
-
+    Method to delete a Node:
+    1) Create a Tree node named aux and point it to the root Node.
+    2) Create a Tree node named parent and point it to the root as well.
+    3) Create a Boolean to determine if the node is a left child and set it to true.
+    4) Iterate while the aux value is different to the value provided.
+    A) If TRUE
+    5) Point parent node to aux node.
+    6) Validate if value is less than aux value.
+    C) If TRUE
+    7) Set "isLeftChild" value to true.
+    8) Point aux node to its left child node.
+    D) If FALSE
+    9) Set "isLeftChild" value to false.
+    10) Point aux node to its right child node.
+    -OUT OF THE IF STATEMENT-
+    11) Validate if aux equals to null.
+    E) If TRUE
+    12) Return false.
+    F) If FALSE
+    13) Do nothing
+    B) If FALSE
+    14) Break While Loop.
+    -OUT OF THE WHILE LOOP-
+    15) Call method to validate the Nodes children.
+    16) Return true after the method is executed.
      */
     @Override
     public boolean deleteNode(T value) {
         TreeNode<T> aux = root;
         TreeNode<T> parent = root;
         boolean isLeftChild = true;
-        if(!(validateIfNodeExists(aux, parent, isLeftChild,value) == true)){
-            return false;
-        }
-        validateNodeChildren(aux, parent, isLeftChild);
-        return true;
-    }
-
-    /*
-
-     */
-    @Override
-    public boolean validateIfNodeExists(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild, T value) {
         while(!(aux.value == value)){
             parent = aux;
             if(value.compareTo(aux.value) < 0){
@@ -217,11 +229,24 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
                 return false;
             }
         }
+        validateNodeChildren(aux, parent, isLeftChild);
         return true;
     }
 
-    /*
 
+    /*
+    Method to validate the Node Children:
+    1) Validate if aux node left and right children are pointing to null.
+    A) If TRUE
+    2) Call method to Delete In First Case.
+    3) Validate if only aux node right child is null.
+    B) If TRUE
+    4) Call method to Delete in second case.
+    5) Validate if aux node lef child is null:
+    C) If TRUE
+    6) Call method to Delete in third case.
+    D) If FALSE
+    7) Call method to Delete in fourth case.
      */
     @Override
     public void validateNodeChildren(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
@@ -239,7 +264,15 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     }
 
     /*
-
+    Method to delete Node in the first case (Both left and right children are pointing to null):
+    1) Validate if aux node equals to root node.
+    A) If TRUE
+    2) Point root to null.
+    3) Validate if isLeftChild is true.
+    B) If TRUE
+    4) Point left child of parent to null.
+    C) If FALSE
+    5) Point right child of parent to null.
      */
     @Override
     public void deleteFirstCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
@@ -253,7 +286,15 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     }
 
     /*
-
+    Method to delete Node in the second case (Only right child node is pointing to null):
+    1) Validate if aux node equals to root node.
+    A) If TRUE
+    2) Point root to left child of aux node.
+    3) Validate if isLeftChild is true.
+    B) If TRUE
+    4) Point left child of parent to left child of aux node.
+    C) If FALSE
+    5) Point right child of parent to left child of aux node.
      */
     @Override
     public void deleteSecondCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
@@ -267,7 +308,15 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     }
 
     /*
-
+    Method to delete Node in the third case (Only left child node is pointing to null):
+    1) Validate if aux node equals to root node.
+    A) If TRUE
+    2) Point root to right child of aux node.
+    3) Validate if isLeftChild is true.
+    B) If TRUE
+    4) Point left child of parent to right child of aux node.
+    C) If FALSE
+    5) Point right child of parent to right child of aux node.
      */
     @Override
     public void deleteThirdCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
@@ -281,7 +330,18 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     }
 
     /*
-
+    Method to delete Node in the fourth case (None of the subtrees are pointing to null):
+    1) Create a replacement value pointing to the result of calling the method getReplacementNode.
+    2) Validate if aux node equals to root node.
+    A) If TRUE
+    3) Point root to replacement node.
+    4) Validate if isLeftChild is true.
+    B) If TRUE
+    5) Point left child of parent to replacement node.
+    C) If FALSE
+    6) Point right child of parent to replacement node.
+    -OUT OF THE IFS-
+    7) Point replacement left child to aux left child.
      */
     @Override
     public void deleteFourthCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
@@ -298,7 +358,25 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     }
 
     /*
-
+    Method to find the deleted Node replacement to keep binary tree structure:
+    1) Create a parent replacement pointing to the node to be replaced.
+    2) Create a replacement node pointing to the node to be replaced.
+    3) Create an aux node pointing to right child of the node to be replaced.
+    4) Iterate while aux node is different to null.
+    A) If TRUE
+    5) Point parent replacement node to replacement.
+    6) point replacement node to aux node.
+    7) Point aux to left child of aux node.
+    B) If FALSE
+    8) Break while loop.
+    9) Validate if replacement node is different to right child of the node to be replaced.
+    C) If TRUE
+    10) Point left child of parent replacement node to right child of replacement node.
+    11) Point right child of replacement node to right child of the node to be replaced.
+    D) If False
+    12) Do nothing.
+    -OUT OF THE IF STATEMENT-
+    13) Return replacement node.
      */
     @Override
     public TreeNode<T> getReplacementNode(TreeNode<T> replacedNode) {

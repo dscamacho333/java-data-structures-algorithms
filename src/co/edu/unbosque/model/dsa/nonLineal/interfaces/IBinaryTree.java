@@ -12,7 +12,6 @@ public interface IBinaryTree <T> {
     void readPostOrder(TreeNode<T> root);
     TreeNode<T> readNode(T value);
     boolean deleteNode(T value);
-    boolean validateIfNodeExists(TreeNode<T> aux,TreeNode<T> parent, boolean isLeftChild, T value);
     void validateNodeChildren(TreeNode<T> aux,TreeNode<T> parent, boolean isLeftChild);
     void deleteFirstCase(TreeNode<T> aux,TreeNode<T> parent, boolean isLeftChild);
     void deleteSecondCase(TreeNode<T> aux,TreeNode<T> parent, boolean isLeftChild);
