@@ -10,6 +10,7 @@ public interface IBinaryTree <T> {
     void readInOrder(TreeNode<T> root);
     void readPreOrder(TreeNode<T> root);
     void readPostOrder(TreeNode<T> root);
+    TreeNode<T> readNode(T value);
 
 
 }
