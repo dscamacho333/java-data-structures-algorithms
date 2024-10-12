@@ -248,7 +248,6 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     D) If FALSE
     7) Call method to Delete in fourth case.
      */
-    @Override
     public void validateNodeChildren(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
 
         if(aux.leftChild == null && aux.rightChild == null){
@@ -274,7 +273,6 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     C) If FALSE
     5) Point right child of parent to null.
      */
-    @Override
     public void deleteFirstCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
         if(aux == root){
             root = null;
@@ -296,7 +294,6 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     C) If FALSE
     5) Point right child of parent to left child of aux node.
      */
-    @Override
     public void deleteSecondCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
         if(aux == root){
             root = aux.leftChild;
@@ -318,7 +315,6 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     C) If FALSE
     5) Point right child of parent to right child of aux node.
      */
-    @Override
     public void deleteThirdCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
         if(aux == root){
             root = aux.rightChild;
@@ -343,7 +339,6 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     -OUT OF THE IFS-
     7) Point replacement left child to aux left child.
      */
-    @Override
     public void deleteFourthCase(TreeNode<T> aux, TreeNode<T> parent, boolean isLeftChild) {
         TreeNode<T> replacement = getReplacementNode(aux);
         if(aux == root){
@@ -378,7 +373,6 @@ public class BinaryTreeImplementation <T extends Comparable<T>> implements IBina
     -OUT OF THE IF STATEMENT-
     13) Return replacement node.
      */
-    @Override
     public TreeNode<T> getReplacementNode(TreeNode<T> replacedNode) {
         TreeNode<T> parentReplacement = replacedNode;
         TreeNode<T> replacement = replacedNode;
