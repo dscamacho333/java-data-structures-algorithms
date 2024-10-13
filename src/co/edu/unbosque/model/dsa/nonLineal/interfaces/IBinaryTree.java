@@ -11,6 +11,9 @@ public interface IBinaryTree <T> {
     void readPreOrder(TreeNode<T> root);
     void readPostOrder(TreeNode<T> root);
     TreeNode<T> readNode(T value);
+    boolean deleteNode(T value);
+
+
 
 
 }
