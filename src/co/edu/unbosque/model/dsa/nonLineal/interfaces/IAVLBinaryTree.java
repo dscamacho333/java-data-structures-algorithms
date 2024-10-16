@@ -1,15 +1,22 @@
 package co.edu.unbosque.model.dsa.nonLineal.interfaces;
 
 import co.edu.unbosque.model.dsa.nonLineal.implementations.AVLTreeNode;
-import co.edu.unbosque.model.dsa.nonLineal.implementations.TreeNode;
 
-public interface IAVLBinaryTree <T>{
+public interface IAVLBinaryTree <T extends Comparable<T>> {
 
-        void createNode(T value);
-        AVLTreeNode<T> readNode(T value, AVLTreeNode<T> root);
+        AVLTreeNode<T> insert(T value);
+
+        void delete(T value);
+
+        void traverseInOrder();
+
+        void traversePreOrder();
+
+        void traversePostOrder();
+
+        T getMax();
+
+        T getMin();
+
         boolean isEmpty();
-        void readInOrder(AVLTreeNode<T> root);
-        void readPreOrder(AVLTreeNode<T> root);
-        void readPostOrder(AVLTreeNode<T> root);
-
 }
