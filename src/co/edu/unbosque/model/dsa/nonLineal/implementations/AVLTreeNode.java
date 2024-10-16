@@ -1,6 +1,6 @@
 package co.edu.unbosque.model.dsa.nonLineal.implementations;
 
-public class AVLTreeNode <T>{
+public class AVLTreeNode <T extends Comparable<T>>{
 
     /*
     Every AVL Tree Node has 4 attributes:
@@ -12,7 +12,7 @@ public class AVLTreeNode <T>{
     T value;
     AVLTreeNode<T> leftChild;
     AVLTreeNode<T> rightChild;
-    int balanceFactor;
+    int height = 1;
 
     /*
     Constructor: This one is used to create a AVL Tree Node from zero.
@@ -21,7 +21,6 @@ public class AVLTreeNode <T>{
         this.value = value;
         this.leftChild = null;
         this.rightChild = null;
-        this.balanceFactor = 0;
     }
 
     /*
@@ -29,7 +28,7 @@ public class AVLTreeNode <T>{
      */
     @Override
     public String toString(){
-        return ("Node value: " + value + ". " + "Node balance factor: " + balanceFactor + ".");
+        return ("Node value: " + value + " Height: " + height);
     }
 
 }
